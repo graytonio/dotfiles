@@ -30,3 +30,8 @@
     fisher update
   args:
     executable: '{{fish.stdout}}'
+
+- name: Set Shell to Fish
+  user:
+    name: "{{ansible_user}}"
+    shell: {{fish.stdout}}
