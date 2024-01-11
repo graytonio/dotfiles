@@ -7,5 +7,3 @@ set -U fish_greeting ""
 status --is-interactive; and begin
     source ~/.config/fish/alias.fish
 end
-
-starship init fish | source

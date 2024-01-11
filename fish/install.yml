@@ -1,12 +1,25 @@
+- name: Install Dependencies
+  package:
+    name: {{item}}
+    state: present
+  with_items:
+    - curl
+
 - name: Install Fish
   package:
     name: fish
     state: present
 
+- name: Ensure Config Directory Exists
+  file:
+    path: '{{ansible_env.HOME}}/.config'
+    state: 'directory'
+
 - name: Link Config
   file:
     src: '{{playbook_dir}}/fish'
-    dest: '{{ansible_env.HOME}}/.config/'
+    dest: '{{ansible_env.HOME}}/.config/fish'
+    state: link
 
 - name: Register Install Location
   command: which fish
@@ -14,7 +27,7 @@
 
 - name: Install Fisher Plugins
   shell: |
+    fisher update
     fisher install jorgebucaran/nvm.fish
   args:
-    executable: '{{fish}}'
-
+    executable: '{{fish.stdout}}'
