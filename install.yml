@@ -1,3 +1,5 @@
+#!/usr/bin/env ansible-playbook
+
 - name: Install Apps and Configs
   hosts: localhost
   tasks:
