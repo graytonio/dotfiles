@@ -1,0 +1,20 @@
+- name: Install Fish
+  package:
+    name: fish
+    state: present
+
+- name: Link Config
+  file:
+    src: '{{playbook_dir}}/fish'
+    dest: '{{ansible_env.HOME}}/.config/'
+
+- name: Register Install Location
+  command: which fish
+  register: fish
+
+- name: Install Fisher Plugins
+  shell: |
+    fisher install jorgebucaran/nvm.fish
+  args:
+    executable: '{{fish}}'
+

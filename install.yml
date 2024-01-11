@@ -1,0 +1,6 @@
+- name: Install Apps and Configs
+  hosts: localhost
+  tasks:
+    - name: Install Fish
+      import_tasks:
+        file: fish/install.yml
