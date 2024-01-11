@@ -28,6 +28,5 @@
 - name: Install Fisher Plugins
   shell: |
     fisher update
-    fisher install jorgebucaran/nvm.fish
   args:
     executable: '{{fish.stdout}}'
