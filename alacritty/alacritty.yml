@@ -1,0 +1,24 @@
+font:
+  normal:
+    family: Hack Nerd Font
+    style: Regular
+
+  bold:
+    family: Hack Nerd Font
+    style: Bold
+
+  italic:
+    family: Hack Nerd Font
+    style: Italic
+
+  bold_italic:
+    family: Hack Nerd Font
+    style: Bold Italic
+  size: 18.0
+
+key_bindings:
+  - { key: Return, mods: Command, action: SpawnNewInstance }
+  - { key: Left, mods: Command, chars: "\x1bb" }
+  - { key: Right, mods: Command, chars: "\x1bf" }
+import:
+  - ~/.config/alacritty/dracula.yml
