@@ -1,6 +1,6 @@
 - name: Install Dependencies
   package:
-    name: {{item}}
+    name: '{{item}}'
     state: present
   with_items:
     - curl
