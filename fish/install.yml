@@ -1,9 +1,17 @@
 - name: Install Dependencies
-  package:
-    name: '{{item}}'
-    state: present
-  with_items:
-    - curl
+  block:
+    - name: Cargo Packages
+      community.general.cargo:
+        name: eza
+        state: present
+    - name: Native Packages
+      package:
+        name: '{{item}}'
+        state: present
+      with_items:
+        - bat
+        - ripgrep
+        - curl
 
 - name: Install Fish
   package:

@@ -1,0 +1,10 @@
+- name: Ensure Config Directory Exists
+  file:
+    path: '{{ansible_env.HOME}}/.config'
+    state: 'directory'
+
+- name: Link Config
+  file:
+    src: '{{playbook_dir}}/alacritty'
+    dest: '{{ansible_env.HOME}}/.config/alacritty'
+    state: link

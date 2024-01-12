@@ -1,0 +1,16 @@
+name: Ubuntu CI Test
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest # Placeholder for the custom image
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run Install Script
+        run: ansible-playbook install.yml

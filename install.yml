@@ -3,6 +3,23 @@
 - name: Install Apps and Configs
   hosts: localhost
   tasks:
+    - name: Install Rust
+      import_tasks:
+        file: rust/install.yml
+      tags:
+        - fish
+        - alacritty
+
     - name: Install Fish
       import_tasks:
         file: fish/install.yml
+        
+    - name: Install Tmux
+      import_tasks:
+        file: tmux/install.yml
+
+    - name: Install Alacritty
+      import_tasks:
+        file: alacritty/install.yml
+      tags:
+        - alacritty

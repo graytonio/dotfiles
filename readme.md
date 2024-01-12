@@ -1,6 +1,6 @@
 # My Custom Dot Files
 
-Repository of my custom configurations for various tools I use in my terminal.
+Repository of my custom configurations for various tools I use in my terminal. It will install any terminal tools and template the configuration for any desktop applications (They will need to be installed separately).
 
 ## Requirements
 
