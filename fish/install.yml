@@ -1,4 +1,5 @@
 - name: Install Dependencies
+  become: "{{ should_be_root }}"
   block:
     - name: Cargo Packages
       community.general.cargo:
@@ -14,6 +15,7 @@
         - curl
 
 - name: Install Fish
+  become: "{{ should_be_root }}"
   package:
     name: fish
     state: present

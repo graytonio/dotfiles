@@ -2,6 +2,8 @@
 
 - name: Install Apps and Configs
   hosts: localhost
+  vars:
+    use_root_for_install: "{{ true if ansible_pkg_mgr != 'brew' else false }}"
   tasks:
     - name: Install Rust
       import_tasks:

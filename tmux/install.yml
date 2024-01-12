@@ -1,4 +1,5 @@
 - name: Install Tmux
+  become: "{{ should_be_root }}"
   package:
     name: tmux
     state: present
