@@ -1,18 +1,16 @@
-- name: Install Dependencies
+- name: Cargo Packages
+  community.general.cargo:
+    name: eza
+    state: present
+- name: Native Packages
   become: "{{ use_root_for_install }}"
-  block:
-    - name: Cargo Packages
-      community.general.cargo:
-        name: eza
-        state: present
-    - name: Native Packages
-      package:
-        name: '{{item}}'
-        state: present
-      with_items:
-        - bat
-        - ripgrep
-        - curl
+  package:
+    name: '{{item}}'
+    state: present
+  with_items:
+    - bat
+    - ripgrep
+    - curl
 
 - name: Install Fish
   become: "{{ use_root_for_install }}"
