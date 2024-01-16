@@ -1,0 +1,16 @@
+#!/usr/bin/env ansible-playbook
+
+- name: Debug Variables
+  hosts: localhost
+  vars:
+    use_root_for_install: "{{ true if ansible_pkg_mgr != 'homebrew' else false }}"
+  tasks:
+    - name: All
+      debug:
+        var: hostvars[inventory_hostname]
+    - name: Use Root
+      debug:
+        var: use_root_for_install
+    - name: Package Manager
+      debug:
+        var: ansible_pkg_mgr
