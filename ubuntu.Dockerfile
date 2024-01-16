@@ -8,7 +8,8 @@ RUN apt -y install \
     ansible \
     curl \
     apt-transport-https \
-    ca-certificates
+    ca-certificates \
+    sudo
 
 # Add Normal User
 RUN adduser --disabled-password --gecos "User" devuser
