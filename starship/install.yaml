@@ -1,0 +1,22 @@
+- name: Install Starship
+  community.general.cargo:
+    name: starship
+    state: present
+    executable: ~/.cargo/bin/cargo
+
+- name: Ensure Config Directory Exists
+  file:
+    path: '{{ansible_env.HOME}}/.config'
+    state: 'directory'
+
+- name: Link Config
+  file:
+    src: '{{playbook_dir}}/starship/starship.toml'
+    dest: '{{ansible_env.HOME}}/.config/starship.toml'
+    state: link
+
+- name: Ensure Starship Prompt Is Sourced
+  lineinfile:
+    path: ~/.config/fish/config.fish
+    regexp: 'starship init fish | source'
+    line: 'starship init fish | source'
