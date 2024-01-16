@@ -42,6 +42,7 @@
     executable: '{{fish.stdout}}'
 
 - name: Set Shell to Fish
+  become: true
   user:
     name: "{{ansible_user_id}}"
     shell: "{{fish.stdout}}"
