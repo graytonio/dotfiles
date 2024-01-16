@@ -54,7 +54,7 @@ install_deps() {
 
 install_configs() {
     ansible-galaxy collection install community.general
-    ansible-playbook $install_location/install.yml
+    ansible-playbook $install_location/install.yml -K
 }
 
 run_install() {
