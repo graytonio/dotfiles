@@ -4,9 +4,6 @@ alias untar 'tar -zxvf'
 alias .. 'cd ..'
 alias ... 'cd ../..'
 alias .... 'cd ../../..'
-alias vim nvim
-
-alias kc kubectl
 
 alias cat 'bat'
 alias grep 'rg'

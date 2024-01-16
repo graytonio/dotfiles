@@ -1,3 +1,9 @@
+- name: Install Dependencies
+  become: "{{ use_root_for_install }}"
+  package:
+    name: cmake
+    state: present
+
 - name: Install Starship
   community.general.cargo:
     name: starship

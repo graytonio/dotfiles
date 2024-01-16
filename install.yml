@@ -9,6 +9,7 @@
       import_tasks:
         file: rust/install.yml
       tags:
+        - rust
         - fish
         - alacritty
         - starship
