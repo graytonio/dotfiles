@@ -10,6 +10,6 @@ alias kc kubectl
 
 alias cat 'bat'
 alias grep 'rg'
-alias la 'exa -a --color=always --group-directories-first --icons'
-alias ll 'exa -l --color=always --group-directories-first --icons'
-alias ls 'exa -al --color=always --group-directories-first --icons'
+alias la 'eza -a --color=always --group-directories-first --icons'
+alias ll 'eza -l --color=always --group-directories-first --icons'
+alias ls 'eza -al --color=always --group-directories-first --icons'

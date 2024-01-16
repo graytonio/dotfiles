@@ -23,7 +23,7 @@ USER devuser
 WORKDIR /home/devuser
 
 WORKDIR /home/devuser/dotfiles
-COPY . .
+COPY --chown=devuser:devuser . .
 RUN ./install.sh
 
 WORKDIR /home/devuser
