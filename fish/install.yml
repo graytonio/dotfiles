@@ -2,6 +2,8 @@
   community.general.cargo:
     name: eza
     state: present
+    path: ~/.cargo
+    
 - name: Native Packages
   become: "{{ use_root_for_install }}"
   package:

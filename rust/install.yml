@@ -14,7 +14,3 @@
 - name: Install rust/cargo
   when: cargo_exists is failed
   shell: /tmp/sh.rustup.rs -y
-
-- name: Reload env
-  when: cargo_exists is failed
-  setup:
