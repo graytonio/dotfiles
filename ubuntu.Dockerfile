@@ -7,7 +7,8 @@ RUN apt -y install \
     git \
     ansible \
     curl \
-    apt-transport-https
+    apt-transport-https \
+    ca-certificates
 
 # Add Normal User
 RUN adduser --disabled-password --gecos "User" devuser
@@ -19,8 +20,8 @@ RUN chown -R root:sudo /usr/local
 USER devuser
 WORKDIR /home/devuser
 
-RUN git clone "https://github.com/graytonio/dotfiles.git"
 WORKDIR /home/devuser/dotfiles
+COPY . .
 RUN ./install.sh
 
 WORKDIR /home/devuser

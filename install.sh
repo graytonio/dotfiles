@@ -52,12 +52,20 @@ install_deps() {
     esac    
 }
 
+install_configs() {
+    ansible-galaxy collection install community.general
+    ansible-playbook $install_location/install.yml
+}
+
 run_install() {
     echo "Installing Platform Dependencies"
     install_deps
 
     echo "Cloning Config Repository"
     clone_repo
+
+    echo "Executing Installation Playbook"
+    install_configs
 }
 
 run_install
