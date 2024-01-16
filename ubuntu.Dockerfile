@@ -7,6 +7,7 @@ RUN apt -y install \
     git \
     ansible \
     curl \
+    build-essential \
     apt-transport-https \
     ca-certificates \
     sudo
