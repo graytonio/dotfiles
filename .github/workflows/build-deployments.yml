@@ -1,0 +1,36 @@
+name: Docker Image Publish
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-publish:
+    runs-on: ubuntu-latest
+    strategy:
+        matrix:
+            platform: [
+                {"file": "ubuntu.Dockerfile", "tag": "ubuntu"}
+            ]
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Log in to GitHub Container Registry
+      uses: docker/login-action@v1
+      with:
+        registry: ghcr.io
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Build and push Docker image
+      uses: docker/build-push-action@v2
+      with:
+        context: .github/runners
+        file: .github/runners/${{ matrix.platform.file }}
+        push: true
+        tags: ghcr.io/${{ github.repository_owner }}/dotfiles-ci-runner:${{ matrix.platform.tag }}
