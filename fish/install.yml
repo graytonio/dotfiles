@@ -1,8 +1,12 @@
 - name: Cargo Packages
   community.general.cargo:
-    name: eza
+    name: '{{item}}'
     state: present
     executable: ~/.cargo/bin/cargo
+  with_items:
+    - eza
+    - bat
+    - ripgrep
     
 - name: Native Packages
   become: "{{ use_root_for_install }}"
@@ -10,8 +14,6 @@
     name: '{{item}}'
     state: present
   with_items:
-    - bat
-    - ripgrep
     - curl
 
 - name: Install Fish

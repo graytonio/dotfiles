@@ -1,3 +1,8 @@
+- name: Install Dependencies
+  package:
+    name: cmake
+    state: present
+
 - name: Ensure Config Directory Exists
   file:
     path: '{{ansible_env.HOME}}/.config'
