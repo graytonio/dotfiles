@@ -19,3 +19,6 @@
   git:
     repo: https://github.com/tmux-plugins/tpm
     dest: '{{ansible_env.HOME}}/.tmux/plugins/tpm'
+
+- name: Install Plugins
+  shell: '{{ansible_env.HOME}}/.tmux/tpm/bin/install_plugins'
