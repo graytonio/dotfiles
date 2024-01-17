@@ -37,3 +37,9 @@
         file: starship/install.yml
       tags:
         - starship
+
+    - name: Install NVIM
+      import_tasks:
+        file: nvim/install.yml
+      tags:
+        - nvim

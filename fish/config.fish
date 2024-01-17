@@ -5,6 +5,7 @@ set -g __fish_home_manager_config_sourced 1
 set -U fish_greeting ""
 
 fish_add_path $HOME/.cargo/bin
+fish_add_path /opt/homebrew/bin
 
 status --is-interactive; and begin
     source ~/.config/fish/alias.fish
