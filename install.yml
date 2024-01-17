@@ -26,11 +26,11 @@
       tags:
         - tmux
 
-    - name: Install Alacritty
-      import_tasks:
-        file: alacritty/install.yml
-      tags:
-        - alacritty
+    # - name: Install Alacritty
+    #   import_tasks:
+    #     file: alacritty/install.yml
+    #   tags:
+    #     - alacritty
     
     - name: Install Starship
       import_tasks:
