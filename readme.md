@@ -44,5 +44,5 @@ This playbook also installs developer tools for a few languages that I use frequ
 As part of the CICD of this repository a docker image is built with all of these tools pre installed and configured which can be used as a ready to go shell environment if needed. It can be run as an interactive shell through the docker CLI
 
 ```bash
-docker run -it --rm ghcr.io/graytonio/dotfiles:ubuntu
+docker run -it --rm --pull always ghcr.io/graytonio/dotfiles:ubuntu
 ```
