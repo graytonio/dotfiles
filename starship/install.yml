@@ -23,6 +23,7 @@
 
 - name: Ensure Starship Prompt Is Sourced
   lineinfile:
-    path: ~/.config/fish/config.fish
+    create: true
+    path: ~/.config/fish/conf.d/starship.fish
     regexp: 'starship init fish \| source'
     line: 'starship init fish | source'

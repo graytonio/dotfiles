@@ -23,6 +23,7 @@
 
 - name: Create Fish Alias
   lineinfile:
-    path: ~/.config/fish/alias.fish
+    create: true
+    path: ~/.config/fish/conf.d/nvim.fish
     regexp: 'alias vim nvim'
     line: 'alias vim nvim'
