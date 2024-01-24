@@ -6,7 +6,7 @@ on:
       - main
 
 env:
-  REGISTRY_IMAGE: graytonio/dotfiles
+  REGISTRY_IMAGE: ghcr.io/graytonio/dotfiles
 
 concurrency:
   group: "build-${{ github.ref }}"
