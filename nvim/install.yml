@@ -1,0 +1,23 @@
+- name: Install NVIM
+  become: "{{ use_root_for_install }}"
+  package:
+    name: neovim
+    state: present
+
+- name: Ensure Config Directory Exists
+  file:
+    path: '{{ansible_env.HOME}}/.config'
+    state: 'directory'
+
+- name: Link Config
+  file:
+    src: '{{playbook_dir}}/nvim'
+    dest: '{{ansible_env.HOME}}/.config/nvim'
+    state: link
+
+- name: Create Fish Alias
+  lineinfile:
+    create: true
+    path: ~/.config/fish/conf.d/nvim.fish
+    regexp: 'alias vim nvim'
+    line: 'alias vim nvim'
