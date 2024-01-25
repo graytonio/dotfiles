@@ -1,5 +1,7 @@
 add_newline = false
 
+format = '$all$kubernetes$character'
+
 [character]
 success_symbol = "[➜](bold green)"
 error_symbol = "[✗](bold red)"
@@ -15,17 +17,17 @@ truncate_to_repo = true
 format = "[$path]($style)[$lock_symbol]($lock_style) "
 style = "bold italic"
 
-[shell]
-disabled=false
+[aws]
+disabled=true
 
-[python]
-version_format=""
+[azure]
+disabled=true
+
+[gcloud]
+disabled=true
 
 [kubernetes]
 disabled=false
-
-[kubernetes.context_aliases]
-"docker-desktop" = "local"
 
 [git_branch]
 format = "[$symbol$branch]($style) "
@@ -40,6 +42,3 @@ style_root = "black bold"
 format = "[$user]($style) "
 disabled = false
 show_always = true
-
-[nodejs]
-format = "[$symbol($version)]($style) "
