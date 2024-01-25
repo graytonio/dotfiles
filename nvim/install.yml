@@ -1,3 +1,9 @@
+- name: Add APT PPA
+  become: true
+  when: ansible_pkg_mgr == 'apt'
+  apt_repository:
+    repo: ppa:neovim-ppa/unstable
+
 - name: Install NVIM
   become: "{{ use_root_for_install }}"
   package:
