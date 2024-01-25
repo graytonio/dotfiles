@@ -4,6 +4,8 @@
   hosts: localhost
   vars:
     use_root_for_install: "{{ true if ansible_pkg_mgr != 'homebrew' else false }}"
+  environment:
+    CARGO_NET_GIT_FETCH_WITH_CLI: "true"
   tasks:
     - name: Install Rust
       import_tasks:
