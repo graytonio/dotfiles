@@ -20,10 +20,3 @@
     src: '{{playbook_dir}}/nvim'
     dest: '{{ansible_env.HOME}}/.config/nvim'
     state: link
-
-- name: Create Fish Alias
-  lineinfile:
-    create: true
-    path: ~/.config/fish/conf.d/nvim.fish
-    regexp: 'alias vim nvim'
-    line: 'alias vim nvim'

@@ -20,10 +20,3 @@
     src: '{{playbook_dir}}/starship/starship.toml'
     dest: '{{ansible_env.HOME}}/.config/starship.toml'
     state: link
-
-- name: Ensure Starship Prompt Is Sourced
-  lineinfile:
-    create: true
-    path: ~/.config/fish/conf.d/starship.fish
-    regexp: 'starship init fish \| source'
-    line: 'starship init fish | source'
