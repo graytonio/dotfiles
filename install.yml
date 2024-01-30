@@ -15,38 +15,23 @@
     - name: Install Rust
       import_tasks:
         file: rust/install.yml
-      tags:
-        - rust
-        - fish
-        - alacritty
-        - starship
+
+    - name: Install Go
+      import_tasks:
+        file: golang/install.yml
 
     - name: Install Fish
       import_tasks:
         file: fish/install.yml
-      tags:
-        - fish
         
     - name: Install Tmux
       import_tasks:
         file: tmux/install.yml
-      tags:
-        - tmux
-
-    # - name: Install Alacritty
-    #   import_tasks:
-    #     file: alacritty/install.yml
-    #   tags:
-    #     - alacritty
     
     - name: Install Starship
       import_tasks:
         file: starship/install.yml
-      tags:
-        - starship
 
     - name: Install NVIM
       import_tasks:
         file: nvim/install.yml
-      tags:
-        - nvim
