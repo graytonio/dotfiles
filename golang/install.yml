@@ -1,0 +1,31 @@
+- name: Install Dependencies
+  become: "{{ use_root_for_install }}"
+  package:
+    name:
+      - gzip
+      - tar
+
+- name: Ensure Download Directory Exists
+  file:
+    state: directory
+    dest: '{{ansible_facts.env.HOME}}/.ansible/tmp/downloads'
+
+- name: Download Go SDK
+  get_url:
+    url: "https://storage.googleapis.com/golang/go{{ go_version }}.linux-{{[ansible_architecture] | map('extract', deb_architecture) | first }}.tar.gz"
+    dest: "{{ansible_facts.env.HOME}}/.ansible/tmp/downloads/go{{ go_version }}.linux-{{[ansible_architecture] | map('extract', deb_architecture) | first }}.tar.gz"
+
+- name: Create Go Install Location
+  become: true
+  file:
+    state: directory
+    dest: '/usr/local/bin'
+
+- name: Install Go SDK
+  become: true
+  unarchive:
+    src: "{{ansible_facts.env.HOME}}/.ansible/tmp/downloads/go{{ go_version }}.linux-{{[ansible_architecture] | map('extract', deb_architecture) | first }}.tar.gz"
+    remote_src: true
+    extra_opts: '--strip-components=1'
+    dest: '/usr/local'
+    creates: '/usr/local/bin'
