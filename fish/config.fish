@@ -7,6 +7,7 @@ set -Ux PYENV_ROOT $HOME/.pyenv
 
 fish_add_path $HOME/.cargo/bin
 fish_add_path $HOME/.pyenv/bin
+fish_add_path /usr/local/go/bin
 fish_add_path $HOME/go/bin
 fish_add_path /opt/homebrew/bin
 
