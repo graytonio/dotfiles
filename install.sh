@@ -42,7 +42,7 @@ install_deps() {
         Darwin)
             install_deps_macos
             ;;
-        ubuntu)
+        ubuntu | linuxmint)
             install_deps_deb
             ;;
         *)
