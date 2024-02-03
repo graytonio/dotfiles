@@ -12,6 +12,10 @@
   environment:
     CARGO_NET_GIT_FETCH_WITH_CLI: "true"
   tasks:
+    - name: Install Python
+      import_tasks:
+        file: python/install.yml
+
     - name: Install Rust
       import_tasks:
         file: rust/install.yml
