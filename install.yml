@@ -27,6 +27,10 @@
     - name: Install Fish
       import_tasks:
         file: fish/install.yml
+
+    - name: Install NodeJS
+      import_tasks:
+        file: node/install.yml
         
     - name: Install Tmux
       import_tasks:
