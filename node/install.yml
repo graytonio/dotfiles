@@ -4,5 +4,5 @@
 
 - name: Install Node Latest
   shell:
-    executable: {{ fish_cmd.stdout }}
+    executable: "{{ fish_cmd.stdout }}"
     cmd: nvm install latest

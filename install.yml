@@ -12,6 +12,11 @@
   environment:
     CARGO_NET_GIT_FETCH_WITH_CLI: "true"
   tasks:
+    - name: set distro codename when OS is Linux Mint
+      ansible.builtin.set_fact:
+        distro_codename: jammy
+      when: ansible_facts['distribution'] == 'Linux Mint' and ansible_distribution_release == 'victoria'
+
     - name: Install Python
       import_tasks:
         file: python/install.yml
