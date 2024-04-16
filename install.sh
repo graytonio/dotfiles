@@ -36,6 +36,26 @@ function get_distro() {
     fi
 }
 
+function get_tags() {
+  tags=""
+
+  if ["$CI" == "true" ]; then
+    echo ""
+    return 0
+  fi
+
+   while true; do
+        read -p "Do you want to install desktop apps? (y/N) " yn
+        case $yn in 
+            [yY][eE][sS]|[yY]) tags="${tags},desktop";
+                break;;
+            * ) break;;
+        esac
+    done
+
+    echo $tags
+}
+
 # Detects os family 
 install_deps() {
     case $(get_distro) in
@@ -54,7 +74,7 @@ install_deps() {
 
 install_configs() {
     ansible-galaxy collection install community.general
-    ansible-playbook $install_location/install.yml -K
+    ansible-playbook $install_location/install.yml -K --tags "$(get_tags)"
 }
 
 run_install() {

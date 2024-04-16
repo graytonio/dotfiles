@@ -1,5 +1,7 @@
 FROM ubuntu:22.04
 
+ARG CI=true
+
 # Add minimal dependencies
 RUN apt update
 RUN (echo 2; echo 106) | apt -y install ansible

@@ -3,6 +3,7 @@
   when: ansible_pkg_mgr == 'apt'
   apt_repository:
     repo: ppa:neovim-ppa/unstable
+    codename: "{{ distro_codename | default(omit) }}"
 
 - name: Install NVIM
   become: "{{ use_root_for_install }}"
