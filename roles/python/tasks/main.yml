@@ -1,0 +1,9 @@
+- name: Install Native Packages
+  become: "{{ use_root_for_install }}"
+  package:
+    name: "{{ package_settings[ansible_facts['distribution'] | lower].packages }}"
+
+- name: Install Pip Packages
+  when: package_settings[ansible_facts['distribution'] | lower].pippackages | length > 0
+  pip:
+    name: "{{ package_settings[ansible_facts['distribution'] | lower].pippackages }}"

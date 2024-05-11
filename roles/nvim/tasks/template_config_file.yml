@@ -1,0 +1,11 @@
+- name: Get Destination Path
+  set_fact:
+    dest_path: "{{ansible_env.HOME}}/.config/nvim/{{item.path}}"
+- name: Ensure Output Path Exists
+  file:
+    path: "{{dest_path | dirname}}"
+    state: directory
+- name: Template Config
+  template:
+    src: '{{item.path}}'
+    dest: '{{dest_path}}'

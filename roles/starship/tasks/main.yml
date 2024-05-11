@@ -1,0 +1,22 @@
+- name: Install Native Packages
+  become: "{{ use_root_for_install }}"
+  package:
+    name: "{{ package_settings[ansible_facts['distribution'] | lower].packages }}"
+    state: present
+
+- name: Install Cargo Packages
+  when: package_settings[ansible_facts['distribution'] | lower].cargopackages | length > 0
+  community.general.cargo:
+    name: "{{ package_settings[ansible_facts['distribution'] | lower].cargopackages }}"
+    state: present
+    executable: ~/.cargo/bin/cargo
+
+- name: Ensure Config Directory Exists
+  file:
+    path: '{{ansible_env.HOME}}/.config'
+    state: 'directory'
+
+- name: Template Config
+  template:
+    src: '../templates/starship.toml'
+    dest: '{{ansible_env.HOME}}/.config/starship.toml'

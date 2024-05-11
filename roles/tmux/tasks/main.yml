@@ -1,0 +1,25 @@
+- name: Install Native Packages
+  become: "{{ use_root_for_install }}"
+  package:
+    name: "{{ package_settings[ansible_facts['distribution'] | lower].packages }}"
+    state: present
+
+- name: Template Config File
+  template:
+    src: '../templates/tmux.conf'
+    dest: '{{ansible_env.HOME}}/.tmux.conf'
+    force: true
+
+- name: Ensure Plugin Directory Exists
+  file:
+    path: '{{ansible_env.HOME}}/.tmux/plugins'
+    state: 'directory'
+
+- name: Install TPM
+  git:
+    depth: 1
+    repo: https://github.com/tmux-plugins/tpm
+    dest: '{{ansible_env.HOME}}/.tmux/plugins/tpm'
+
+- name: Install Plugins
+  shell: '{{ansible_env.HOME}}/.tmux/plugins/tpm/bin/install_plugins'

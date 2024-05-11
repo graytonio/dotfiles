@@ -1,0 +1,9 @@
+package_settings:
+  archlinux:
+    packages:
+      - python
+      - pypy
+      - python-pip
+      - pyenv
+      - python-pipenv
+    pippackages: []

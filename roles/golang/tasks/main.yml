@@ -1,0 +1,13 @@
+- name: Install Native Packages
+  become: "{{ use_root_for_install }}"
+  package:
+    name: "{{ package_settings[ansible_facts['distribution'] | lower].packages }}"
+
+- name: Install Go Native Packages
+  when: package_settings[ansible_facts['distribution'] | lower].gopackages | length > 0
+  with_items: "{{ package_settings[ansible_facts['distribution'] | lower].gopackages }}"
+  shell: "go install {{ item }}"
+  environment:
+    PATH: "/home/{{ ansible_env.USER }}/go:{{ ansible_env.PATH }}"
+    GOPATH: "/home/{{ ansible_env.USER }}/go"
+    GOBIN: "/home{{ ansible_ansible_env.USER }}/go/bin"

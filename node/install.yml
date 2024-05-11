@@ -1,8 +1,0 @@
-- name: Find Fish Shell
-  command: which fish
-  register: fish_cmd
-
-- name: Install Node Latest
-  shell:
-    executable: "{{ fish_cmd.stdout }}"
-    cmd: nvm install latest

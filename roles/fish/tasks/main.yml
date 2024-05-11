@@ -1,0 +1,41 @@
+- name: Install Cargo Packages
+  when: package_settings[ansible_facts['distribution'] | lower].cargopackages | length > 0
+  community.general.cargo:
+    name: "{{ package_settings[ansible_facts['distribution'] | lower].cargopackages }}"
+    state: present
+    executable: ~/.cargo/bin/cargo
+    
+- name: Install Native Packages
+  become: "{{ use_root_for_install }}"
+  when: package_settings[ansible_facts['distribution'] | lower].packages | length > 0
+  package:
+    name: "{{ package_settings[ansible_facts['distribution'] | lower].packages }}"
+    state: present
+
+- name: Clean Existing Config
+  file:
+    path: "{{ansible_env.HOME}}/.config/fish"
+    state: absent
+
+- name: Template Clean Config
+  include_tasks: template_config_file.yml
+  when: item.state != 'directory'
+  vars:
+    item: "{{item}}"
+  with_community.general.filetree: ../templates/
+
+- name: Register Install Location
+  command: which fish
+  register: fish
+
+- name: Install Fisher Plugins
+  shell: |
+    fisher update
+  args:
+    executable: '{{fish.stdout}}'
+
+- name: Set Shell to Fish
+  become: true
+  user:
+    name: "{{ansible_user_id}}"
+    shell: "{{fish.stdout}}"

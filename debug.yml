@@ -8,6 +8,12 @@
     - name: All
       debug:
         var: hostvars[inventory_hostname]
+    - name: Distribution
+      debug:
+        var: ansible_facts['distribution']
+    - name: Release
+      debug:
+        var: ansible_distribution_release
     - name: Use Root
       debug:
         var: use_root_for_install

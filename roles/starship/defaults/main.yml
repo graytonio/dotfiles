@@ -1,0 +1,6 @@
+package_settings:
+  archlinux:
+    packages:
+      - cmake
+    cargopackages:
+      - starship

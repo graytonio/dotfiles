@@ -1,0 +1,9 @@
+package_settings:
+  archlinux:
+    packages:
+      - curl
+      - fish
+    cargopackages:
+      - eza
+      - bat
+      - ripgrep

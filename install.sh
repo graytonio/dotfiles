@@ -17,6 +17,10 @@ install_deps_macos() {
     brew install git ansible
 }
 
+install_deps_arch() {
+    sudo pacman -Syu git ansible
+}
+
 # Determine the distro
 # Here are some known OSes:
 # - On Mac: Darwin
@@ -64,6 +68,9 @@ install_deps() {
             ;;
         ubuntu | linuxmint)
             install_deps_deb
+            ;;
+        garuda)
+            install_deps_arch
             ;;
         *)
             echo "Unsupported platform detected $(get_distro). Exiting"

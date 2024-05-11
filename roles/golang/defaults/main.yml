@@ -1,0 +1,6 @@
+package_settings:
+  archlinux:
+    packages:
+      - go
+    gopackages:
+      - github.com/goreleaser/goreleaser@v1.25.1

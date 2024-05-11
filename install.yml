@@ -1,64 +1,23 @@
 #!/usr/bin/env ansible-playbook
 
-- name: Install Apps and Configs
+- name: Configure Platform
   hosts: localhost
   vars:
     use_root_for_install: "{{ true if ansible_pkg_mgr != 'homebrew' else false }}"
-    go_version: "1.21.6"
-    deb_architecture: {
-      "aarch64": "arm64",
-      "x86_64": "amd64"
-    }
-  environment:
-    CARGO_NET_GIT_FETCH_WITH_CLI: "true"
-  tasks:
-    - name: set distro codename when OS is Linux Mint
-      tags: [ 'always' ]
-      ansible.builtin.set_fact:
-        distro_codename: jammy
-      when: ansible_facts['distribution'] == 'Linux Mint' and (ansible_distribution_release == 'victoria' or ansible_distribution_release == 'virginia')
-
-    - name: Install Python
-      tags: [ 'always' ]
-      import_tasks:
-        file: python/install.yml
-
-    - name: Install Rust
-      tags: [ 'always' ]
-      import_tasks:
-        file: rust/install.yml
-
-    - name: Install Go
-      tags: [ 'always' ]
-      import_tasks:
-        file: golang/install.yml
-
-    - name: Install Fish
-      tags: [ 'always' ]
-      import_tasks:
-        file: fish/install.yml
-
-    - name: Install NodeJS
-      tags: [ 'always' ]
-      import_tasks:
-        file: node/install.yml
-        
-    - name: Install Tmux
-      tags: [ 'always' ]
-      import_tasks:
-        file: tmux/install.yml
-    
-    - name: Install Starship
-      tags: [ 'always' ]
-      import_tasks:
-        file: starship/install.yml
-
-    - name: Install NVIM
-      tags: [ 'always' ]
-      import_tasks:
-        file: nvim/install.yml
-
-    - name: Install Desktop Apps
-      tags: [ 'never', 'desktop' ]
-      import_tasks:
-        file: desktop/install.yml
+  roles:
+    - role: python
+      tags: [ python, programming ]
+    - role: rust
+      tags: [ rust, programming ]
+    - role: golang
+      tags: [ golang, programming ]
+    - role: fish
+      tags: [ fish, shell ]
+    - role: node
+      tags: [ nodejs, programming ]
+    - role: starship
+      tags: [ starship, shell ]
+    - role: tmux
+      tags: [ tmux, shell ]
+    - role: nvim
+      tags: [ nvim, tools ]
